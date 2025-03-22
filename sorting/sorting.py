@@ -39,7 +39,7 @@ def Selection_sort(li):
 
 
 
-# start with second positon and compare with all previous position and perform swap 
+#Insertion sort start with second positon and compare with all previous position and perform swap 
 
 nums = [44, 33,25,66,78,56,44]
 
@@ -52,4 +52,44 @@ def insertion_sort(li):
             li[j] = temp
     return li
 
-print(insertion_sort(nums))
+# print(insertion_sort(nums))
+
+
+
+#merge-sort :
+#
+
+def merge(left,right):
+   combined = []
+   i = 0
+   j = 0
+   while i < len(left) and j < len(right):
+      if left[i] < right[j]:
+         combined.append(left[i])
+         i+=1
+      else:
+         combined.append(right[j])
+         j+=1
+   combined.extend(left[i:])
+   combined.extend(right[j:])     
+
+   return combined
+
+def merge_sort(li):
+   
+   if len(li) == 1:
+      return li
+   
+   mid = len(li)//2
+
+   left = li[0:mid]
+   right = li[mid:]
+   
+   left = merge_sort(left)
+   right = merge_sort(right)
+
+   return merge(left,right)
+
+
+print("merge sort : ", merge_sort(nums))
+
